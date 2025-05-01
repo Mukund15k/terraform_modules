@@ -4,25 +4,7 @@ This module provisions a **production-ready Virtual Private Cloud (VPC)** in AWS
 
 The module is designed to be reusable, scalable, and follows **industry best practices** for security, performance, and manageability.
 
----
 
-## 📌 Table of Contents
-
-- [Features](#features)
-- [Architecture Diagram](#architecture-diagram)
-- [Usage Example](#usage-example)
-- [Input Variables](#input-variables)
-- [Outputs](#outputs)
-- [Requirements](#requirements)
-- [Module Folder Structure](#module-folder-structure)
-- [Best Practices](#best-practices)
-- [Testing Strategy](#testing-strategy)
-- [Naming Convention](#naming-convention)
-- [Future Enhancements](#future-enhancements)
-- [Author](#author)
-- [License](#license)
-
----
 
 ## ✨ Features
 
@@ -48,7 +30,7 @@ The module is designed to be reusable, scalable, and follows **industry best pra
             │ │ 10.0.1.0/24 │     │ 10.0.2.0/24  │          │
             │ └──────┬──────┘     └──────┬───────┘          │
             │        │ IGW               │ IGW              │
-            │        ▼                  ▼                   │
+            │        ▼                   ▼                   │
             │    ┌────────┐        ┌────────┐               │
             │    │ Route  │        │ Route  │               │
             │    │ Table  │        │ Table  │               │
@@ -59,7 +41,7 @@ The module is designed to be reusable, scalable, and follows **industry best pra
             │ │10.0.101.0/24│     │10.0.102.0/24 │          │
             │ └──────┬──────┘     └──────┬───────┘          │
             │        │ NAT               │ NAT              │
-            │        ▼                  ▼                   │
+            │        ▼                   ▼                   │
             │    ┌────────┐        ┌────────┐               │
             │    │ Route  │        │ Route  │               │
             │    │ Table  │        │ Table  │               │
@@ -82,6 +64,7 @@ module "vpc" {
   availability_zones   = ["us-east-1a", "us-east-1b"]
 }
 
+
 ## 📥 Input Variables
 
 | Name                   | Type          | Description                                            | Example                        |
@@ -95,6 +78,7 @@ module "vpc" {
 
 📤 Outputs
 
+
 | Name                | Description                                    |
 |---------------------|------------------------------------------------|
 | `vpc_id`            | ID of the VPC                                  |
@@ -102,12 +86,17 @@ module "vpc" {
 | `private_subnet_ids`| List of private subnet IDs                     |
 | `nat_gateway_id`    | NAT Gateway ID used for private subnet routing |
 
+
+
 🧩 Requirements
+
+
 Terraform >= 1.2.0
 
 AWS CLI configured with credentials
 
 Terraform AWS provider >= 4.0
+
 
 🗂️ Folder Structure
 
@@ -117,7 +106,10 @@ vpc/
 ├── outputs.tf      # Output definitions
 └── README.md       # This documentation file
 
+
 🧪 Testing Strategy
+
+
 We recommend the following tools:
 
 terraform validate – Basic validation
@@ -130,7 +122,11 @@ checkov – Security scan
 
 terratest – Go-based infrastructure testing (optional)
 
+
+
 🧠 Best Practices
+
+
 Use S3 + DynamoDB for remote state backend
 
 Tag all resources with environment (dev, stage, prod)
@@ -141,14 +137,21 @@ Use depends_on in modules to control resource dependencies
 
 Avoid hardcoding AZs — use data "aws_availability_zones" if dynamic discovery is needed
 
+
+
 🔖 Naming Convention
+
+
 Use consistent and descriptive naming:
 <project>-<env>-<region>
 e.g.
 todo-dev-us-east-1
 mkx-prod-ap-south-1
 
+
 📈 Future Enhancements
+
+
 VPC Flow Logs
 
 Transit Gateway support
@@ -159,10 +162,14 @@ Dedicated subnets for database, Lambda, and bastion
 
 PrivateLink endpoints
 
+
 🙋 Author
+
+
 Mukund Kale
 Cloud Architect | DevOps Engineer | Terraform | AWS
 GitHub: github.com/mukundkale
+
 
 📄 License
 This module is licensed under the MIT License.
